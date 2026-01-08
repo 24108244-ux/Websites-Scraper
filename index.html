@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Web Scraping Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-spider"></i>
+                <h1>Web Scraper </h1>
+            </div>
+            <p class="tagline">Extract data from any website dynamically</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section card">
+                <h2><i class="fas fa-globe"></i> Enter Website URL</h2>
+                <p class="section-description">Paste the URL of any public website to extract its content</p>
+                
+                <div class="url-input-container">
+                    <div class="input-group">
+                        <i class="fas fa-link input-icon"></i>
+                        <input 
+                            type="url" 
+                            id="urlInput" 
+                            placeholder="https://example.com"
+                            value="https://books.toscrape.com"
+                        >
+                        <button id="scrapeBtn" class="btn-primary">
+                            <i class="fas fa-search"></i> Scrape Website
+                        </button>
+                    </div>
+                    <p class="input-hint">
+                        <i class="fas fa-lightbulb"></i> 
+                        Try: news sites, blogs, e-commerce pages, or any public website
+                    </p>
+                </div>
+
+                <div class="loading-container" id="loadingContainer">
+                    <div class="spinner"></div>
+                    <p>Scraping website content...</p>
+                </div>
+
+                <div class="error-container" id="errorContainer"></div>
+
+                <!-- Quick Examples -->
+                <div class="quick-examples">
+                    <h3><i class="fas fa-bolt"></i> Quick Examples:</h3>
+                    <div class="example-buttons">
+                        <button class="example-btn" data-url="https://books.toscrape.com">
+                            <i class="fas fa-book"></i> Book Store
+                        </button>
+                        <button class="example-btn" data-url="https://news.ycombinator.com">
+                            <i class="fas fa-newspaper"></i> Hacker News
+                        </button>
+                        <button class="example-btn" data-url="https://github.com/trending">
+                            <i class="fab fa-github"></i> GitHub Trending
+                        </button>
+                        <button class="example-btn" data-url="https://en.wikipedia.org/wiki/Web_scraping">
+                            <i class="fab fa-wikipedia-w"></i> Wikipedia
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-bar"></i> Scraped Data</h2>
+                    <div class="results-stats" id="resultsStats">
+                        <!-- Stats will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Metadata Card -->
+                <div class="data-card card" id="metadataCard">
+                    <h3><i class="fas fa-info-circle"></i> Page Information</h3>
+                    <div class="metadata-grid" id="metadataContent">
+                        <!-- Metadata will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Headings Card -->
+                <div class="data-card card" id="headingsCard">
+                    <h3><i class="fas fa-heading"></i> Headings Structure</h3>
+                    <div class="headings-container" id="headingsContent">
+                        <!-- Headings will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Content Card -->
+                <div class="data-card card" id="contentCard">
+                    <h3><i class="fas fa-paragraph"></i> Text Content</h3>
+                    <div class="content-container" id="contentContent">
+                        <!-- Content will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Links Card -->
+                <div class="data-card card" id="linksCard">
+                    <h3><i class="fas fa-external-link-alt"></i> Links Found</h3>
+                    <div class="links-container" id="linksContent">
+                        <!-- Links will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Images Card -->
+                <div class="data-card card" id="imagesCard">
+                    <h3><i class="fas fa-image"></i> Images Found</h3>
+                    <div class="images-container" id="imagesContent">
+                        <!-- Images will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tables Card -->
+                <div class="data-card card" id="tablesCard">
+                    <h3><i class="fas fa-table"></i> Tables Found</h3>
+                    <div class="tables-container" id="tablesContent">
+                        <!-- Tables will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Raw Data Card -->
+                <div class="data-card card" id="rawDataCard">
+                    <h3><i class="fas fa-code"></i> Raw JSON Data</h3>
+                    <div class="raw-data-container">
+                        <button id="toggleRawData" class="btn-secondary">
+                            <i class="fas fa-eye"></i> Show/Hide Raw Data
+                        </button>
+                        <pre id="rawDataContent"><code>Scrape a website to view raw JSON data</code></pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-cogs"></i> Technology Stack</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python Flask</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                        <span class="tech-tag">Requests</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-shield-alt"></i> Ethical Scraping</h4>
+                    <p class="ethics-note">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        This tool is for educational purposes only. Always respect:
+                    </p>
+                    <ul class="ethics-list">
+                        <li>robots.txt files</li>
+                        <li>Website terms of service</li>
+                        <li>Rate limiting policies</li>
+                        <li>Copyright laws</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-project-diagram"></i> Project Info</h4>
+                    <p>Advanced Web Scraping Tool v1.0</p>
+                    <p>University-Level Project</p>
+                    <p class="server-status">
+                        <i class="fas fa-server"></i> 
+                        Backend Status: <span id="serverStatus">Checking...</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Web Scraping Project | Academic Submission | Data extracted in real-time</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
